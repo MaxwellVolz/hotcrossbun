@@ -1,0 +1,16 @@
+{
+  "name": "02-websocket-chat",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch src/server.ts",
+    "build": "bun build src/client.ts --outdir dist",
+    "build:all": "bun run build && bun run compile",
+    "compile": "bun build --compile src/server.ts --outfile dist/server",
+    "start": "NODE_ENV=production bun src/server.ts",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}

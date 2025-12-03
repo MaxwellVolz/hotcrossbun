@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Chat</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .chat-container {
+        width: 90%;
+        max-width: 600px;
+        height: 80vh;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .chat-header {
+        background: #667eea;
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .chat-header h1 {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .chat-header .status {
+        font-size: 0.875rem;
+        margin-top: 5px;
+        opacity: 0.9;
+      }
+
+      .messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 20px;
+        background: #f7f7f7;
+      }
+
+      .message {
+        margin-bottom: 15px;
+        animation: slideIn 0.3s ease;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .message.system {
+        text-align: center;
+        color: #666;
+        font-size: 0.875rem;
+        font-style: italic;
+      }
+
+      .message.user .username {
+        font-weight: 600;
+        color: #667eea;
+        margin-bottom: 3px;
+      }
+
+      .message.user .text {
+        background: white;
+        padding: 10px 15px;
+        border-radius: 8px;
+        display: inline-block;
+        max-width: 70%;
+        word-wrap: break-word;
+      }
+
+      .message.me .text {
+        background: #667eea;
+        color: white;
+        float: right;
+      }
+
+      .message .timestamp {
+        font-size: 0.75rem;
+        color: #999;
+        margin-top: 3px;
+      }
+
+      .input-area {
+        padding: 20px;
+        background: white;
+        border-top: 1px solid #eee;
+        display: flex;
+        gap: 10px;
+      }
+
+      .input-area input {
+        flex: 1;
+        padding: 12px 15px;
+        border: 2px solid #eee;
+        border-radius: 8px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+
+      .input-area input:focus {
+        border-color: #667eea;
+      }
+
+      .input-area button {
+        padding: 12px 24px;
+        background: #667eea;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      .input-area button:hover {
+        background: #5568d3;
+      }
+
+      .input-area button:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chat-container">
+      <div class="chat-header">
+        <h1>WebSocket Chat</h1>
+        <div class="status" id="status">Connecting...</div>
+      </div>
+      <div class="messages" id="messages"></div>
+      <div class="input-area">
+        <input
+          type="text"
+          id="messageInput"
+          placeholder="Type a message..."
+          disabled
+        />
+        <button id="sendButton" disabled>Send</button>
+      </div>
+    </div>
+    <script type="module" src="/client.js"></script>
+  </body>
+</html>
