@@ -1,0 +1,16 @@
+{
+  "name": "01-tiny-api-and-client",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch src/api.ts",
+    "build": "bun build src/client.ts --outdir dist",
+    "build:all": "bun run build && bun run compile",
+    "compile": "bun build --compile src/api.ts --outfile dist/server",
+    "start": "NODE_ENV=production bun src/api.ts",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
