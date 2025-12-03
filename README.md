@@ -1,6 +1,8 @@
 
 # Hot Cross Bun
 
+![Hot Cross Bun Logo](./hotcrossbun.png)
+
 A collection of small, focused projects built to explore **Bun**: the runtime, the bundler, the test runner, and Bun’s ability to ship **self-contained executables**.
 
 Each subproject isolates one capability with the goal of understanding how Bun behaves in real-world build and release workflows.
