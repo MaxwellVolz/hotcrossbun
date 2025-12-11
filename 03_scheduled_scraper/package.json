@@ -1,0 +1,15 @@
+{
+  "name": "03-scheduled-scraper",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch src/index.ts",
+    "start": "bun src/index.ts",
+    "scrape": "bun src/scraper.ts",
+    "compile": "bun build --compile src/index.ts --outfile dist/scraper",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
